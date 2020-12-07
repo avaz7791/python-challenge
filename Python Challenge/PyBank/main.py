@@ -14,7 +14,6 @@ Description: Process csv file budget_data.csv to calculate the following:
 import os
 import csv
 
-
 #initialize variable
 csv_file = 'C:\\Users\\sonof\\UCSDProjects\\python-challenge\\Python Challenge\\PyBank\\Resources\\budget_data.csv'
 
@@ -36,14 +35,12 @@ with open(csv_file) as csvfile:
         tot_month.append(row[0])
         tot_profit.append(int(row[1])) #add pl column from file to total profit variable, convert 2nd column into an integer
         
-       # print(row)
-
     #for each month added to total_profit calculate the change in the month
     for plm in range(len(tot_profit) - 1):
         PL_Change.append(tot_profit[ plm + 1]  - tot_profit[ plm ])
 
-greatIncrease = max(PL_Change)    
-greatDecrease = min(PL_Change)    
+greatIncrease = max(PL_Change)    #find maximum number in the profit and lost month change
+greatDecrease = min(PL_Change)    #find minimum number in the profit and lost month change
 
 MnthGrtIncrease = PL_Change.index(greatIncrease)+1 #add one more row to get the correct max month
 MnthGrtDecrease = PL_Change.index(greatDecrease)+1 #add one more row to get the correct min month
@@ -64,8 +61,8 @@ output_txt = 'C:\\Users\\sonof\\UCSDProjects\\python-challenge\\Python Challenge
 
 #Print File
 with open(output_txt,"w") as output:
-    output.write("Financial Analysis" "\n")
-    output.write("---------------------------------------------------""\n")
+    output.write(f'Financial Analysis \n')
+    output.write(f'---------------------------------------------------\n')
     output.write(f'Total Months: {len(tot_month)} \n') 
     output.write(f'Total: ${sum(tot_profit)} \n') 
     output.write(f'Average Change: ${ round(sum(PL_Change)/len(PL_Change),2) } \n')
