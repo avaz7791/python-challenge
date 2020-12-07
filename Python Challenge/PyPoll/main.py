@@ -18,7 +18,9 @@ csv_file = 'C:\\Users\\sonof\\UCSDProjects\\python-challenge\\Python Challenge\\
 
 tot_votes = []
 Candidates = []
+CandidatesDict = dict() #create dictionary to hold canidate name and store value
 
+#CandidatesDict ={'Candidate':"Votes"} #add a Header to the dictionary
 with open(csv_file) as csvfile:
 
     # CSV reader specifies delimiter and variable that holds contents
@@ -31,37 +33,32 @@ with open(csv_file) as csvfile:
     for row in csvreader:
        
         tot_votes.append(row[0])
-        Candidates.append(row[2])
-x=0        
-CanditList =[]
+
+        if row[2] in CandidatesDict.keys():
+            CandidatesDict[row[2]] +=1
+        else:
+            CandidatesDict[row[2]] =1
 
 
-DistinctCandiadates = [CanditList.append(x) for x in Candidates if x not in CanditList ]
+totalvotes=len(tot_votes)
 
-print (len(CanditList))
-print (CanditList)
+print(f'Election Results')
+print(f'-------------------')
+print(f'Total Votes: {len(tot_votes)}') # print the total number of votes
+print(f'-------------------')
 
-_dict = {'Candidate','Votes'}
+maxVotes =0 #initialize to find out who had the most votes
+for CandidatesDict, VotesDict in CandidatesDict.items():    #going throught the dictionary and pulling the items for candidate and votes
+    print(f'{CandidatesDict}: {float(VotesDict/totalvotes*100):.3f}% ({VotesDict})')
 
-_Candidates = []
-_Candidates.append(_dict)
-_Candidates.append('Jerry',20)
+    if VotesDict >= maxVotes: # check to see who has the most votes the bigger number will win
+        maxVotes=VotesDict
+        WinCanidate =CandidatesDict
+print(f'-------------------')
+print(f'Winner: {WinCanidate}')
+print(f'-------------------')
 
-print(_Candidates)
-
-    #for each month added to total_profit calculate the change in the month
-    #for plm in range(len(tot_profit) - 1):
-    #    PL_Change.append(tot_profit[ plm + 1]  - tot_profit[ plm ])
-
-
-# print(f'Election Results')
-# print(f'-------------------')
-# print(f'Total Votes: {len(tot_votes)}') # print the total number of months
-
-
-
-
-#output_txt = 'C:\\Users\\sonof\\UCSDProjects\\python-challenge\\Python Challenge\\PyPoll\\analysis\\PyPoll_Analysis_Summary.txt'
+output_txt = 'C:\\Users\\sonof\\UCSDProjects\\python-challenge\\Python Challenge\\PyPoll\\analysis\\PyPoll_Analysis_Summary.txt'
 
 #Print File
 # with open(output_txt,"w") as output:
