@@ -14,7 +14,9 @@ Description: Process csv file election_data.csv to calculate the following:
 import os, csv
 
 #initialize variable
-csv_file = 'C:\\Users\\sonof\\UCSDProjects\\python-challenge\\Python Challenge\\PyPoll\\Resources\\election_data.csv'
+#csv_file = 'C:\\Users\\sonof\\UCSDProjects\\python-challenge\\Python Challenge\\PyPoll\\Resources\\election_data.csv'
+cwd = os.getcwd()
+csv_file =os.path.join(cwd,'Python Challenge\PyPoll\Resources\election_data.csv')
 
 tot_votes = []
 Candidates = []
@@ -32,37 +34,48 @@ with open(csv_file) as csvfile:
     # for each row of data after the header
     for row in csvreader:
        
-        tot_votes.append(row[0])
+        tot_votes.append(row[0])  #Adds voteid to tot_votes, well use this to get the total # of votes
 
-        if row[2] in CandidatesDict.keys():
+        if row[2] in CandidatesDict.keys(): # Add Candidates to the Dictionary and count the votes
+                                            # The dictionary will hold the Candidate (from column 3)
+                                            # and it will hold the value ( the sum +=1 )
             CandidatesDict[row[2]] +=1
         else:
-            CandidatesDict[row[2]] =1
+            CandidatesDict[row[2]] =1       # if its a new Candidate lets add him and start the count to 1
 
+#Set the Output File
+#output_txt = 'C:\\Users\\sonof\\UCSDProjects\\python-challenge\\Python Challenge\\PyPoll\\analysis\\PyPoll_Analysis_Summary.txt'
 
-totalvotes=len(tot_votes)
+output_txt = os.path.join(cwd,'Python Challenge\PyPoll\\analysis\PyPoll_Analysis_Summary.txt')
 
-print(f'Election Results')
-print(f'-------------------')
-print(f'Total Votes: {len(tot_votes)}') # print the total number of votes
-print(f'-------------------')
+totalvotes=len(tot_votes) #Count the total num of votes
 
-maxVotes =0 #initialize to find out who had the most votes
-for CandidatesDict, VotesDict in CandidatesDict.items():    #going throught the dictionary and pulling the items for candidate and votes
-    print(f'{CandidatesDict}: {float(VotesDict/totalvotes*100):.3f}% ({VotesDict})')
+#Print 2 File & to Screen (:D )---------------------------------------------------------------------------
+with open(output_txt,"w") as output:
+    print(f'Election Results')
+    output.write(f'Election Results \n')
+    print(f'-------------------------')
+    output.write(f'------------------------- \n')
+    print(f'Total Votes: {len(tot_votes)}') # print the total number of votes
+    output.write(f'Total Votes: {len(tot_votes)} \n') # print the total number of months
+    print(f'-------------------------')
+    output.write(f'------------------------- \n')
 
-    if VotesDict >= maxVotes: # check to see who has the most votes the bigger number will win
-        maxVotes=VotesDict
-        WinCanidate =CandidatesDict
-print(f'-------------------')
-print(f'Winner: {WinCanidate}')
-print(f'-------------------')
+    maxVotes =0 #initialize to find out who had the most votes
 
-output_txt = 'C:\\Users\\sonof\\UCSDProjects\\python-challenge\\Python Challenge\\PyPoll\\analysis\\PyPoll_Analysis_Summary.txt'
+    for CandidatesDict, VotesDict in CandidatesDict.items():    #going throught the dictionary and pulling the items 
+                                                                #for candidate and votes
+        print(f'{CandidatesDict}: {float(VotesDict/totalvotes*100):.3f}% ({VotesDict})') # Print the candidate, the % of votes, #of Votes
+        output.write(f'{CandidatesDict}: {float(VotesDict/totalvotes*100):.3f}% ({VotesDict}) \n') #Print to file
 
-#Print File
-# with open(output_txt,"w") as output:
+        if VotesDict >= maxVotes: # check to see who has the most votes the bigger number will win
+            maxVotes=VotesDict
+            WinCanidate =CandidatesDict
 
-#     output.write(f'Election Results \n')
-#     output.write(f'------------------- \n')
-#     output.write(f'Total Votes: {len(tot_votes)} \n') # print the total number of months
+    print(f'-------------------------')
+    output.write(f'------------------------- \n')    
+    print(f'Winner: {WinCanidate}')
+    output.write(f'Winner: {WinCanidate}\n')
+    print(f'-------------------------')
+    output.write(f'------------------------- \n')
+
