@@ -11,8 +11,7 @@ Description: Process csv file budget_data.csv to calculate the following:
    - Min profits 
 """
 #add libraries
-import os
-import csv
+import os, csv
 
 #initialize variable
 csv_file = 'C:\\Users\\sonof\\UCSDProjects\\python-challenge\\Python Challenge\\PyBank\\Resources\\budget_data.csv'
