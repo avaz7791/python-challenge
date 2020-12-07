@@ -16,7 +16,8 @@ import os, csv
 #initialize variable
 #csv_file = 'C:\\Users\\sonof\\UCSDProjects\\python-challenge\\Python Challenge\\PyPoll\\Resources\\election_data.csv'
 cwd = os.getcwd()
-csv_file =os.path.join(cwd,'Python Challenge\PyPoll\Resources\election_data.csv')
+FileName= 'Python Challenge\PyPoll\Resources\election_data.csv'
+csv_file =os.path.join(cwd, FileName)
 
 tot_votes = []
 Candidates = []
@@ -45,8 +46,8 @@ with open(csv_file) as csvfile:
 
 #Set the Output File
 #output_txt = 'C:\\Users\\sonof\\UCSDProjects\\python-challenge\\Python Challenge\\PyPoll\\analysis\\PyPoll_Analysis_Summary.txt'
-
-output_txt = os.path.join(cwd,'Python Challenge\PyPoll\\analysis\PyPoll_Analysis_Summary.txt')
+FileName='Python Challenge\PyPoll\\analysis\PyPoll_Analysis_Summary.txt'
+output_txt = os.path.join(cwd, FileName)
 
 totalvotes=len(tot_votes) #Count the total num of votes
 
