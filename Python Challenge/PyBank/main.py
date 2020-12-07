@@ -60,3 +60,15 @@ print(f'Average Change: ${ round(sum(PL_Change)/len(PL_Change),2) }') # print th
 print(f'Greatest Increase: { tot_month[ MnthGrtIncrease]}  (${ greatIncrease} )') # print the greatest increase value in pl change
 print(f'Greatest Decrease: { tot_month[ MnthGrtDecrease]}  (${ greatDecrease })') # print the greatest Decrease value in pl change
 
+output_txt = 'C:\\Users\\sonof\\UCSDProjects\\python-challenge\\Python Challenge\\PyBank\\analysis\\PyBank_Analysis_Summary.txt'
+
+#Print File
+with open(output_txt,"w") as output:
+    output.write("Financial Analysis" "\n")
+    output.write("---------------------------------------------------""\n")
+    output.write(f'Total Months: {len(tot_month)} \n') 
+    output.write(f'Total: ${sum(tot_profit)} \n') 
+    output.write(f'Average Change: ${ round(sum(PL_Change)/len(PL_Change),2) } \n')
+    output.write(f'Greatest Increase: { tot_month[ MnthGrtIncrease]}  (${ greatIncrease} ) \n') 
+    output.write(f'Greatest Decrease: { tot_month[ MnthGrtDecrease]}  (${ greatDecrease }) \n') 
+
