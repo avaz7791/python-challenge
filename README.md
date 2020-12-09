@@ -83,3 +83,25 @@ The program will compute all of the Candidates that are in the file. If newer ca
 This was achieved by the use of dictionary computation.
 
 There is no input from the user requiered other than the csv file.
+
+
+
+# Bonus
+
+## PyBoss
+Take an employee file and parse to update the file and output a new fiel with the following:
+
+	The Name column should be split into separate First Name and Last Name columns.
+	The DOB data should be re-written into MM/DD/YYYY format.
+	The SSN data should be re-written such that the first five numbers are hidden from view.
+	The State data should be re-written as simple two-letter abbreviations.
+
+## PyParagrapgh
+Import a text file filled with a paragraph of your choosing.
+	There are 3 text files that were used for testing
+
+Assess the passage for each of the following:
+	Approximate word count
+	Approximate sentence count
+	Approximate letter count (per word)
+	Average sentence length (in words)
