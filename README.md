@@ -98,10 +98,10 @@ Take an employee file and parse to update the file and output a new fiel with th
 
 ## PyParagrapgh
 Import a text file filled with a paragraph of your choosing.
-	There are 3 text files that were used for testing
+There are 3 text files that were used for testing.
 
 Assess the passage for each of the following:
-	Approximate word count
-	Approximate sentence count
-	Approximate letter count (per word)
-	Average sentence length (in words)
+	Approximate word count.
+	Approximate sentence count.
+	Approximate letter count (per word).
+	Average sentence length (in words).
