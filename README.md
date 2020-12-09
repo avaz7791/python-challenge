@@ -105,3 +105,5 @@ Assess the passage for each of the following:
 	Approximate sentence count.
 	Approximate letter count (per word).
 	Average sentence length (in words).
+
+	
