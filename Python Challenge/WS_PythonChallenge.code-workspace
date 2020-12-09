@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": ".."
+		},
+		{
+			"path": "..\\..\\..\\UCSDBootcamp\\ucsd-sd-data-pt-11-2020-u-c\\01-Lesson-Plans\\03-Python"
 		}
 	],
 	"settings": {}

@@ -17,12 +17,15 @@ cwd = os.getcwd()
 filename='Python Challenge\PyBoss\Resources\\employee_data.csv'
 csv_file =os.path.join(cwd,filename)
 
+# Emp ID,Name,DOB,SSN,State
+# Initialize variables arrays/lists
 EmpID = []
 Employee_FName=[]
 Employee_LName=[]
 DOB=[]
 SSN = []
 State=[]
+# EmployeeList = dict() not needed
 
 #us_statee_abbrev dictionary
 us_state_abbrev = {
@@ -79,8 +82,7 @@ us_state_abbrev = {
 }
 
 
-with open(csv_file) as csvfile:
-
+with open(csv_file, 'r') as csvfile:
     # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',')
 
@@ -88,16 +90,28 @@ with open(csv_file) as csvfile:
     csv_header = next(csvreader)
 
     for row in csvreader:
-        EmpID.append(row[0])
+        EmpID.append(row[0].split(" ")[0])                  #
         Employee_FName.append(row[1].split(" ")[0])
         Employee_LName.append(row[1].split(" ")[1])
-        DOB.append(row[2].split("-")[1] +"/"+row[2].split("-")[2] +"/"+row[2].split("-")[0]  )
+        DOB.append(row[2].split("-")[1] + "/" + row[2].split("-")[2] + "/" + row[2].split("-")[0])
+        
+        State.append(us_state_abbrev[row[4]])
+        #SSN.append(row[3].split("-")[0] +"-"+ row[3].split("-")[1] + "-"+ row[3].split("-")[2] )
+        SSN.append("***-**"+ row[3].split("-")[2] )
 
 
-#print (EmpID)
-#print (Employee_LName)
-print(DOB)
+Obs = zip(EmpID, Employee_FName, Employee_LName, SSN, State)  # Add variables and zip into Obs 
+Observation = set(Obs)              # convert Obs into a set
 
+
+#Set new file to output
+filename='Python Challenge\PyBoss\employee_data_Upd.csv'
+output_csv =os.path.join(cwd,filename)
+
+#Print File
+with open(output_csv,"w" , newline='', encoding='utf-8') as output:    
+    csvfile = csv.writer(output, delimiter = ",")   #Set the delimiter to comma
+    csvfile.writerows(Observation)                  #Use the Set Observation and write to file
 
 
 
